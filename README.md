@@ -1,4 +1,4 @@
-# Rise of the Half Moon (offline for PC)
+# Rise of the Half Moon (offline for PC & PS Vita)
 
 The 8 Google Doodle **Rise of the Half Moon** games (October 2024 to May 2025), playable without an internet connection:
 
