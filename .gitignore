@@ -1,0 +1,16 @@
+# Builds
+bin/
+obj/
+publish/
+.vs/
+*.user
+vita/build-vita/
+vita/build-pc/
+
+# Ficheiros dos jogos (© Google): as apps descarregam-nos, não vão para o repositório
+Jogos/
+
+# Pacotes gerados (publicados nas Releases do GitHub)
+releases/
+*.vpk
+*.zip

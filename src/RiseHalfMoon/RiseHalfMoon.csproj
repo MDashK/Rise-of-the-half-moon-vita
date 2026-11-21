@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>RiseHalfMoon</AssemblyName>
+    <AssemblyTitle>Rise of the Half Moon (offline)</AssemblyTitle>
+    <Product>Rise of the Half Moon Offline</Product>
+    <Authors>MDashK</Authors>
+    <Version>1.1.0</Version>
+    <ApplicationIcon>$(MSBuildThisFileDirectory)..\..\icon.ico</ApplicationIcon>
+    <!-- Com -p:IncludeGames=false a pasta Jogos não vai junto (releases: a app descarrega os jogos da Google). -->
+    <IncludeGames Condition="'$(IncludeGames)' == ''">true</IncludeGames>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+  </ItemGroup>
+
+  <!-- Ícone da janela e imagem da caixa "About". -->
+  <ItemGroup>
+    <Resource Include="$(MSBuildThisFileDirectory)..\..\icon.ico" Link="Assets\icon.ico" />
+    <Resource Include="$(MSBuildThisFileDirectory)..\..\icon.png" Link="Assets\icon.png" />
+  </ItemGroup>
+
+  <!-- Cópia local dos jogos (pasta Jogos na raiz da solução), só para builds de desenvolvimento. -->
+  <ItemGroup Condition="'$(IncludeGames)' == 'true'">
+    <None Include="$(MSBuildThisFileDirectory)..\..\Jogos\**\*"
+          Exclude="$(MSBuildThisFileDirectory)..\..\Jogos\**\*.part;$(MSBuildThisFileDirectory)..\..\Jogos\download.log"
+          Link="Jogos\%(RecursiveDir)%(Filename)%(Extension)"
+          CopyToOutputDirectory="PreserveNewest"
+          CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
